@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 xyz = []
 atoms = []
@@ -21,5 +22,9 @@ x = xyz[:, np.newaxis, :] - xyz[np.newaxis, :, :]
 x = np.abs(x)
 x1 = (x <= (box/2)) * x + (x > (box/2)) * (box - x)
 distances = np.sum(x1 ** 2, axis=-1) ** 0.5
-# distances = distances[np.triu_indices(len(distances), k=1)]
-print(np.min(distances), np.max(distances))
+distances = distances[np.triu_indices(len(distances), k=1)]
+distances = np.sort(distances)[:3000]
+a, bins = np.histogram(distances, bins=145)
+plt.hist(bins[:-1], bins, weights=a)
+plt.show()
+
