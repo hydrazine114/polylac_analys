@@ -59,7 +59,8 @@ def read_dump(input):
 
 
 per = [0, 0.105, 0.115, 0.125, 0.138, 0.147, 0.16]
-if True:
+a = False
+if a:
     system = read_gro('AFTEROPTwat.gro')[:920]
     coords = choose_co(system)
 else:
