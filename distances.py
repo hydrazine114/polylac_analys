@@ -28,17 +28,29 @@ def calc_dist(system, n=0):
 
 def choose_co(system):
     new_system = []
+    c = 0
+    o = 0
     for line in system:
         if line[2][0] == 'C' or line[2][0] == 'O':
             new_system.append(line[4:])
+        if line[2][0] == 'C':
+            c+=1
+        if line[2][0] == 'O':
+            o+=1
     return np.array(new_system)
 
 
 def choose_co2(system):
     new_system = []
+    c = 0
+    o = 0
     for line in system:
         if line[0] == 1 or line[0] == 2:
             new_system.append(line[1:])
+        if line[0] == 1:
+            c+=1
+        if line[0] == 2:
+            o+=1
     return np.array(new_system)
 
 
@@ -59,7 +71,7 @@ def read_dump(input):
 
 
 per = [0, 0.105, 0.115, 0.125, 0.138, 0.147, 0.16]
-a = False
+a = True
 if a:
     system = read_gro('AFTEROPTwat.gro')[:920]
     coords = choose_co(system)
