@@ -77,9 +77,12 @@ def read_gro(input_file):
     with open(input_file) as file:
         for line in file:
             if len(line) >= 44:
-                system.append([int(line[0:5]), line[5:10].strip(),
-                               line[10:15].strip(), int(line[15:20]), float(line[20:28]),
-                               float(line[28:36]), float(line[36:44])])
+                try:
+                    system.append([int(line[0:5]), line[5:10].strip(),
+                                   line[10:15].strip(), int(line[15:20]), float(line[20:28]),
+                                   float(line[28:36]), float(line[36:44])])
+                except Exception as e:
+                    pass
     return system
 
 
